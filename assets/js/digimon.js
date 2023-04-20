@@ -9,7 +9,7 @@ function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un d
 
 function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el DOM
     const card =`
-        <div id="digimon-id-${digimon.numero}" class="card scale-in-center" style="width: 16rem;" data-toggle="modal" data-target="#digimon-modal">
+        <div id="digimon-id-${digimon.numero}" class="card card-digimon scale-in-center" data-toggle="modal" data-target="#digimon-modal">
             <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
             <div class="card-body">
                 <p>

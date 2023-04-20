@@ -1,9 +1,23 @@
+/* BODY */
+body{
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+} 
+
+
+/* card digimon*/
+.card-digimon{
+    width: 16rem;
+    height: auto;
+}
+
 /* animacion de botones */
 .fade-in-bottom {
 	-webkit-animation: fade-in-bottom 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: fade-in-bottom 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
-
 
 /* animacion de card */
 .scale-in-center {
