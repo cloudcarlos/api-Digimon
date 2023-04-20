@@ -9,8 +9,7 @@ function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un d
 
 function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el DOM
     const card =`
-    <button>
-        <div id="digimon-id-${digimon.numero}" class="card" style="width: 16rem;" data-toggle="modal" data-target="#digimon-modal">
+        <div id="digimon-id-${digimon.numero}" class="card scale-in-center" style="width: 16rem;" data-toggle="modal" data-target="#digimon-modal">
             <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
             <div class="card-body">
                 <p>
@@ -21,11 +20,10 @@ function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el
                     
                 </p>
             </div>
-            <div class="card-footer text-muted">
-                <button class='btn btn-link' id="btnModal-${digimon.numero}">Mostrar Digimon</button>
+            <div class="card-footer text-center">
+                <button class='hidden btn btn-link fade-in-bottom' id="btnModal-${digimon.numero}">Mostrar mas...</button>
             </div>
         </div>
-    </button>
     `;
     //console.log("card generado");
     return card;
