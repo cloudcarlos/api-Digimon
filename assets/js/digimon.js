@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un digimon aleatorio
     const primerDigimon = 1; //primer id digimon
     const ultimoDigimon = 1422; //ultimo id digimon
