@@ -9,6 +9,7 @@ function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un d
 
 function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el DOM
     const card =`
+    <button>
         <div id="digimon-id-${digimon.numero}" class="card" style="width: 16rem;" data-toggle="modal" data-target="#digimon-modal">
             <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
             <div class="card-body">
@@ -24,6 +25,7 @@ function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el
                 <button class='btn btn-link' id="btnModal-${digimon.numero}">Mostrar Digimon</button>
             </div>
         </div>
+    </button>
     `;
     //console.log("card generado");
     return card;
@@ -74,11 +76,4 @@ $(".card").click(function() {
     let tipos = $(this).find(".tipos").val();
     let descripcion = $(this).find(".descripcion").val();
 
-    $()
-
-
-
-
-
 })
->>>>>>> Stashed changes
