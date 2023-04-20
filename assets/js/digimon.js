@@ -9,19 +9,13 @@ function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un d
 
 function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el DOM
     const card =`
-        <div id="digimon-id-${digimon.numero}" class="card card-digimon scale-in-center" data-toggle="modal" data-target="#digimon-modal">
+        <div id="digimon-id-${digimon.numero}" class="card card-digimon scale-in-center" data-toggle="modal" data-target="#modal-digimon">
             <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
             <div class="card-body">
-                <p>
                     <h4 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h4>
                     <h3 class="card-title">${digimon.nombre}</h3>
                     <input type="hidden" value='${digimon.tipos}'>
                     <input type="hidden" value='${digimon.descripcion}'>
-                    
-                </p>
-            </div>
-            <div class="card-footer text-center">
-                <button class='hidden btn btn-link fade-in-bottom' id="btnModal-${digimon.numero}">Mostrar mas...</button>
             </div>
         </div>
     `;
@@ -69,9 +63,6 @@ async function quienEsEseDigimon(){
         return console.log("digimon agregado");
     }
 }
+// MODAL DIGIMON
 
-$(".card").click(function() {
-    let tipos = $(this).find(".tipos").val();
-    let descripcion = $(this).find(".descripcion").val();
 
-})
