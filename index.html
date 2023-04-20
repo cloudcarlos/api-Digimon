@@ -43,12 +43,37 @@
             </div>
         </div>
     </div>
+
+    <!-- MODAL PARA MOSTRAR LA INFORMACION DEL DIGIMON-->
+    <div class="modal fade" id="modal-digimon" tabindex="-1" role="dialog" aria-labelledby="modal-digimon-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-digimon-label">${digimon.nombre}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Tipo:</strong> <span class="tipo"></span></p>
+                    <p><strong>Descripción:</strong></p>
+                    <p class="descripcion"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <footer class="bg-light">
         <div class="container">
             <p>TripleG Spa. Derechos reservados © 2023</p>
         </div>
     </footer>
       
+    
 <!-------------- SCRIPTS -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
@@ -58,14 +83,15 @@
         <script src="./assets/js/digimon.js"></script>
         <script>
             $(document).ready(function(){
+<<<<<<< Updated upstream
                 
+=======
+>>>>>>> Stashed changes
                 for (let i = 0; i<10; i++) { // i< indica cuantos pokemon random genera
                     quienEsEsePokemon();
                 }
-                
             }); 
-
-
         </script>
 </body>
 </html>
+|
