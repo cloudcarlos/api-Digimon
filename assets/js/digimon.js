@@ -1,82 +1,103 @@
+// VARIABLES Y CONSTANTES
+const primerDgm = 1;    //primer digimon
+const ultimoDgm = 1422; //ultimo digimon
+const cuantos= 10// cantidad de digimon generados
+const ms = 100 // cantidad de milisegundos entre renderizar una u otra card
 
-function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un digimon aleatorio
-    const primerDigimon = 1; //primer id digimon
-    const ultimoDigimon = 1422; //ultimo id digimon
-    const id = Math.floor(Math.random() * (ultimoDigimon - primerDigimon +1)) + primerDigimon;
-    //console.log("id random generado");
-    return id;
+
+
+// genera un id aleatorio para ver los datos de un digimon aleatorio
+function generarIds(cantidad){ 
+    ids= [];
+    for(i = 0; i < cantidad; i++){
+        let id = Math.floor(Math.random() * (ultimoDgm - primerDgm +1)) + primerDgm;
+        ids.push(id);
+    }
+    //console.log("ids generado");
+    return ids;
 }
-
-function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el DOM
+//card para ser renderizado en el DOM #random-digimon
+function cardDigimonRandom(digimon){ 
     const card =`
         <div id="digimon-${digimon.numero}" class="card digimon scale-in-center" data-toggle="modal" data-target="#digiModal">
             <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
             <div class="card-body">
-                    <h4 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h4>
-                    <h3 class="card-title">${digimon.nombre}</h3>
-                    <input type="hidden" value='${digimon.tipos}'>
-                    <input type="hidden" value='${digimon.descripcion}'>
+                <h4 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h4>
+                <h3 class="card-title">${digimon.nombre}</h3>
+                <input type="hidden" value='${digimon.tipos}'>
+                <input type="hidden" value='${digimon.descripcion}'>
             </div>
         </div>
     `;
     //console.log("card generado");
     return card;
 }
-
-function obtenerDigimon(id,cantidad){ // busqueda de digimon random
-        const url= `https://digimon-api.com/api/v1/digimon/${id}`;
-        //console.log('url api digimon...');
-        return fetch(url)
-        .then(response => response.json() )
-        .then(data => {
+// busqueda de digimon random
+async function obtenerDigimon(cuantos){
+    let ids = generarIds(cuantos) 
+    let digimons = [];
+    for (let id of ids){
+        try{
+            //console.log('url api digimon...');
+            const url = `https://digimon-api.com/api/v1/digimon/${id}`;
+            const response = await fetch(url);
+            const data = await response.json();
             const digimon = {
-                numero : data.id,
-                nombre : data.name,
-                imagen : data.images[0].href,
-                tipos : data.types,
-                descripcion: data.descriptions
-            }
-            // almacenar solo la descripcion en ingles 
-            let textoIngles;
+                numero: data.id,
+                nombre: data.name,
+                imagen: data.images[0].href,
+              //  tipos: data.types,
+                //descripcion: data.descriptions
+            };
+            /*
+            //capturar descripcion en ingles
+            let textoIngles; 
             digimon.descripcion.forEach(descripcion => {
-                if (descripcion.language === "en_us"){
-                    textoIngles = descripcion.description
+                if (descripcion.language === "en_us") {
+                    textoIngles = descripcion.description;
                 }
-            })
+            });
             digimon.descripcion = textoIngles;
-            // almacenar los type name en un solo string, ya que vienen todos en un array
+            
+            //capturar los tipos del digimon
             let tipos = digimon.tipos.map(tipo => tipo.type).join(", ");
             digimon.tipos = tipos;
-            //console.log("digimon generado");
-            return digimon;
-        })
-        .catch(error => console.error(error))
-        
-        }
+            
+            //almacenar los digimon, en el array digimons
+            digimons.push(digimon);
+            */
 
-async function quienEsEseDigimon(cantidad){
-    const ms = 100 // cantidad de milisegundos entre tenderizar una u otra card
-    const digimons=[];
-    let idRandom = idDigimonRandom();
-    for (i = 0; i>cantidad; i++ ){
-        digimons.push( await obtenerDigimon(idRandom));
+            digimon.tipos = '';
+            digimon.descripcion='';
+            console.table(digimon)
+            
+            }catch (error) {
+        console.error(error);
+        }
     }
-    if(digimons){
-        
-        let x = ms;// tiempo en milisegundos
-        const digimonContenedor = document.querySelector("#random-digimon");
-        /*
-        digimons.forEach(digimon => {
-            let dgmCard= cardDigimonRandom(digimon);
-            digimonContenedor.insertAdjacentHTML('beforeend', dgmCard);
-        })
-        */
-        //return console.log(digimons.nombre + ' agregado');    
-    }
-    console.log('digimons')
+    return renderizarDigimones(digimons,ms);
 }
 
+function renderizarDigimones(digimons,tiempo) {
+    const digimonContenedor = document.querySelector("#random-digimon");
+    digimons.forEach( digimon => {
+        setTimeout( ()=> {
+            console.log('reeendering')
+            let card = cardDigimonRandom(digimon);
+            console.log(digimon.nombre +'/card generado')
+            digimonContenedor.insertAdjacentHTML("beforeend", card);
+        }, tiempo);
+    });
+  }
 
+  /*
+async function quienEsEseDigimon(cantidad){
+    let ids= generarIds (cantidad);
+    let digimons = await obtenerDigimon(ids);
+    //console.table(digimons)
+    renderizarDigimones(digimons,ms);
+}
+*/
 
 // MODAL DIGIMON
 function limpiarModal(){
