@@ -9,7 +9,7 @@ function idDigimonRandom(){ // genera un id aleatorio para ver los datos de un d
 
 function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el DOM
     const card =`
-        <div id="digimon-id-${digimon.numero}" class="card card-digimon scale-in-center" data-toggle="modal" data-target="#modal-digimon">
+        <div id="digimon-${digimon.numero}" class="card digimon scale-in-center" data-toggle="modal" data-target="#digiModal">
             <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
             <div class="card-body">
                     <h4 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h4>
@@ -60,9 +60,15 @@ async function quienEsEseDigimon(){
         const dgmCard= cardDigimonRandom(digimon);
         const digimonContenedor = document.querySelector("#random-digimon");
         digimonContenedor.insertAdjacentHTML('beforeend', dgmCard);
-        return console.log("digimon agregado");
-    }
+        return console.log(digimon.nombre + ' agregado');    }
 }
 // MODAL DIGIMON
+function limpiarModal(){
+    $('.modal-numero').text('');
+    $('.modal-nombre').text('');
+    $('.modal-tipo').text('');
+    $('.modal-descripcion').text('');
+}
+
 
 
