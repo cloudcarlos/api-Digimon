@@ -24,7 +24,7 @@ function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el
 }
 
 function obtenerDigimon(id){ // busqueda de digimon random
-    const url= `http://digimon-api.com/api/v1/digimon/${id}`;
+    const url= `https://digimon-api.com/api/v1/digimon/${id}`;
     //console.log('url api digimon...');
     return fetch(url)
     .then(response => response.json() )
