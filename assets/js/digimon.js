@@ -23,45 +23,61 @@ function cardDigimonRandom(digimon){ //genera el card para ser renderizado en el
     return card;
 }
 
-function obtenerDigimon(id){ // busqueda de digimon random
-    const url= `https://digimon-api.com/api/v1/digimon/${id}`;
-    //console.log('url api digimon...');
-    return fetch(url)
-    .then(response => response.json() )
-    .then(data => {
-        const digimon = {
-            numero : data.id,
-            nombre : data.name,
-            imagen : data.images[0].href,
-            tipos : data.types,
-            descripcion: data.descriptions
-        }
-        // almacenar solo la descripcion en ingles 
-        let textoIngles;
-        digimon.descripcion.forEach(descripcion => {
-            if (descripcion.language === "en_us"){
-                textoIngles = descripcion.description
+function obtenerDigimon(id,cantidad){ // busqueda de digimon random
+        const url= `https://digimon-api.com/api/v1/digimon/${id}`;
+        //console.log('url api digimon...');
+        return fetch(url)
+        .then(response => response.json() )
+        .then(data => {
+            const digimon = {
+                numero : data.id,
+                nombre : data.name,
+                imagen : data.images[0].href,
+                tipos : data.types,
+                descripcion: data.descriptions
             }
+            // almacenar solo la descripcion en ingles 
+            let textoIngles;
+            digimon.descripcion.forEach(descripcion => {
+                if (descripcion.language === "en_us"){
+                    textoIngles = descripcion.description
+                }
+            })
+            digimon.descripcion = textoIngles;
+            // almacenar los type name en un solo string, ya que vienen todos en un array
+            let tipos = digimon.tipos.map(tipo => tipo.type).join(", ");
+            digimon.tipos = tipos;
+            //console.log("digimon generado");
+            return digimon;
         })
-        digimon.descripcion = textoIngles;
-        // almacenar los type name en un solo string, ya que vienen todos en un array
-        let tipos = digimon.tipos.map(tipo => tipo.type).join(", ");
-        digimon.tipos = tipos;
-        //console.log("digimon generado");
-        return digimon;
-    })
-    .catch(error => console.error(error))
+        .catch(error => console.error(error))
+        
+        }
+
+async function quienEsEseDigimon(cantidad){
+    const ms = 100 // cantidad de milisegundos entre tenderizar una u otra card
+    const digimons=[];
+    let idRandom = idDigimonRandom();
+    for (i = 0; i>cantidad; i++ ){
+        digimons.push( await obtenerDigimon(idRandom));
+    }
+    if(digimons){
+        
+        let x = ms;// tiempo en milisegundos
+        const digimonContenedor = document.querySelector("#random-digimon");
+        /*
+        digimons.forEach(digimon => {
+            let dgmCard= cardDigimonRandom(digimon);
+            digimonContenedor.insertAdjacentHTML('beforeend', dgmCard);
+        })
+        */
+        //return console.log(digimons.nombre + ' agregado');    
+    }
+    console.log('digimons')
 }
 
-async function quienEsEseDigimon(){
-    const idRandom = idDigimonRandom();
-    const digimon = await obtenerDigimon(idRandom);
-    if(digimon){
-        const dgmCard= cardDigimonRandom(digimon);
-        const digimonContenedor = document.querySelector("#random-digimon");
-        digimonContenedor.insertAdjacentHTML('beforeend', dgmCard);
-        return console.log(digimon.nombre + ' agregado');    }
-}
+
+
 // MODAL DIGIMON
 function limpiarModal(){
     $('.modal-numero').text('');

@@ -96,13 +96,8 @@
         <script src='./assets/js/digimon.js?v=123'></script>
         <script>
           $(document).ready(function(){
-              const x = 100// tiempo en milisegundos
-              for (let i = 0; i<10; i++) { // i< indica cuantos pokemon random genera
-                  setTimeout( function() { // setTimeout ayuda a ir mostrando los modal cada x milisegundos
-                      quienEsEseDigimon()
-                  }, i * x);
-              };
-              
+                quienEsEseDigimon(10);
+                
                   let tarjetitas= document.querySelectorAll('.digimon');
                   $(tarjetitas).click( function () {
                       alert('ahaha')
