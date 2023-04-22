@@ -40,7 +40,7 @@
         <div class="album py-5 bg-body-tertiary">
             <div class="container">
                 <!-- inicio de las card -->
-                <div id="random-digimon" class="row row-cols-2 row-cols-md-3 g-3">
+                <div id="random-digimon" class="row row-cols-3 row-cols-md-2 g-4">
                   
                 </div>
                 <!-- fin de las card -->
@@ -89,27 +89,12 @@
 
         <script src='./assets/js/digimon.js?v=123'></script>
         <script>
-          $(document).ready(function(){
-            const cantidadDigimon= 10
-            obtenerDigimon(cantidadDigimon);
-                /*
-                  let tarjetitas= document.querySelectorAll('.digimon');
-                  $(tarjetitas).click( function () {
-                      alert('ahaha')
-                      limpiarModal();
-                      let digimon = {
-                          nuumero : $("this").data('numero'),
-                          noombre : $('this').data('nombre'),
-                          tiipos : $('this').data('tipos'),
-                          deescripshon : $('this').data('descripcion')
-                      }
-                      $('.modal-numero').text(digimon.nuumero);
-                      $('.modal-nombre').text(digimon.noombre);
-                      $('.modal-tipo').text(digimon.tiipos);
-                      $('.modal-descripcion').text(digimon.deescripshon);
-                      $("#digiModal").modal("show")
-                  });*/
-              });
+            $(document).ready(function(){
+                const maximo = 30;
+                for (i = 0; i < maximo; i++){
+                    quienEsEseDigimon();
+                }                  
+            });
     
       </script>
 </body>

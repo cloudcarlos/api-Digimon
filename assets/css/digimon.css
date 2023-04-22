@@ -1,17 +1,19 @@
-/* BODY */
+/* 
+//BODY
 body{
     background-image: url('../img/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
-
+*/
 
 
 /* card digimon*/
 .card-digimon{
     width: 256px;
-    height: 400px;
+    height: 380px;
+    padding-top: 2rem;
 }
 
 /* animacion de botones */
