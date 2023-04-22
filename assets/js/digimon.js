@@ -110,12 +110,13 @@ function mostrarModal(elementoId){
         //captura la url de la imagen del digimon
         const cardImagen = card.querySelector('.card-img-top');
         const urlImgDigimon = cardImagen.getAttribute('src');
-
+        /*
         console.log(`URL de imagen: ${urlImgDigimon}`);
         console.log(`
             | n°: ${numeroDigimon} | name: ${nombreDigimon} | tipo: ${tipoDigimon} 
             | descripcion : ${descrDigimon}
         `);
+        */
         //asigno los valores al modal
         numeroModal.text(numeroDigimon);
         nombreModal.text(nombreDigimon);
