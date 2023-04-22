@@ -20,6 +20,7 @@ function generarCard(digimon){
             <h5 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h5>
             <h4 class="card-title">${digimon.nombre}</h4>
             <input type="hidden" class="card-tipos" value='${digimon.tipos}'>
+            <input type="hidden" class="card-niveles" value='${digimon.niveles}'>
             <input type="hidden" class="card-descripcion" value='${digimon.descripcion}'>
         </div>
     </div>
@@ -43,10 +44,12 @@ async function obtenerDigimon(id){
             numero: data.id,
             nombre: data.name,
             imagen: data.images[0].href,
+            niveles: data.levels,
             tipos: data.types,
             descripcion: data.descriptions
         };
-        
+
+
         //capturar descripcion en ingles
         let textoIngles; 
         digimon.descripcion.forEach(descripcion => {
@@ -59,8 +62,12 @@ async function obtenerDigimon(id){
         //capturar los tipos del digimon
         let tipos = digimon.tipos.map(tipo => tipo.type).join(", ");
         digimon.tipos = tipos;
-            
-        //console.table(digimon)    
+
+        //capturar los level del digimon
+        let niveles = digimon.niveles.map(nivel => nivel.level).join(", ");
+        digimon.niveles = niveles;
+
+        console.table(digimon)    
         return digimon;       
 
     }catch (error) {
@@ -91,6 +98,7 @@ function mostrarModal(elementoId){
     const numeroModal = $('.modal-numero');
     const nombreModal = $('.modal-nombre');
     const tiposModal = $('.modal-tipo');
+    const nivelesModal = $('.modal-nivel');
     const descrModal = $('.modal-descripcion');
     const imgModal = $('.modal-imagen');
     // capturo los datos del card 
@@ -104,6 +112,9 @@ function mostrarModal(elementoId){
         //captura el value de los tipos del digimon
         const cardTipo = cardBody.querySelector('.card-tipos');
         const tipoDigimon = cardTipo.getAttribute('value');
+        //captura el value de los niveles del digimon
+        const cardNivel = cardBody.querySelector('.card-niveles');
+        const nivelDigimon = cardNivel.getAttribute('value');
         //captura el value de la descripcion del digimon
         const cardDescr = cardBody.querySelector('.card-descripcion');
         const descrDigimon = cardDescr.getAttribute('value');
@@ -121,6 +132,7 @@ function mostrarModal(elementoId){
         numeroModal.text(numeroDigimon);
         nombreModal.text(nombreDigimon);
         tiposModal.text(tipoDigimon);
+        nivelesModal.text(nivelDigimon);
         descrModal.text(descrDigimon);
         imgModal.attr("src", urlImgDigimon);
         imgModal.addClass("img-thumbnail rounded-circle bounce-in-top")
@@ -134,12 +146,14 @@ function limpiarModal(){
     const numeroModal = $('.modal-numero');
     const nombreModal = $('.modal-nombre');
     const tipoModal = $('.modal-tipo');
+    const nivelModal = $('.modal-nivel')
     const descripcionModal = $('.modal-descripcion');
     const imagenModal = $('.modal-imagen');
 
     numeroModal.text('');
     nombreModal.text('');
     tipoModal.text('');
+    nivelModal.text('');
     descripcionModal.text('');
     imagenModal.attr('src', '');
     imagenModal.removeClass("img-thumbnail rounded-circle bounce-in-top")
