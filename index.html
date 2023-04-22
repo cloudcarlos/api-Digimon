@@ -52,11 +52,8 @@
     <div class="modal fade" id="digiModal" tabindex="-1" role="dialog" aria-labelledby="modal-digimon-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title justify-content-center" id="modal-digimon-label">Mas información del Digimon</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-header modal-header-no-close">
+                <h5 id="modal-digimon-label" class="modal-title">Mas información del Digimon</h5>
             </div>
             <div class="modal-body">
                 <div id="uno" style="display:flex">
@@ -66,7 +63,7 @@
                         <p><strong>Tipos:</strong> <span class="modal-tipo"></span></p>                      
                     </div>
                     <div id="derecha">
-                        <img class='modal-imagen' alt="Img no disponible">
+                        <img class='modal-imagen img-thumbnail rounded-circle' alt="Img no disponible">
                     </div>
                 </div>
                 <div id="dos">
