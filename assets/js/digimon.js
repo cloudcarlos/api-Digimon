@@ -1,6 +1,6 @@
 // VARIABLES Y CONSTANTES
-const primerDgm = 1;    //primer digimon
-const ultimoDgm = 1422; //ultimo digimon
+const primerDgm = 1;    //primer digimon 1
+const ultimoDgm = 1422; //ultimo digimon 1422
 const cuantos= 10       // cantidad de digimon generados
 const ms = 500          // cantidad de milisegundos entre renderizar una u otra card
 
@@ -14,11 +14,11 @@ function generarId(){
 //card para ser renderizado en el DOM #random-digimon
 function generarCard(digimon){ 
     const card =`
-    <div id="digimon-${digimon.numero}" class="card card-digimon scale-in-center" data-toggle="modal" data-target="#digiModal" onclick="mostrarModal('digimon-${digimon.numero}')">
+    <div id="digimon-${digimon.numero}" class="card card-digimon slide-in-bck-center" data-toggle="modal" data-target="#digiModal" onclick="mostrarModal('digimon-${digimon.numero}')">
         <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
         <div class="card-body justify-content-center">
-            <h4 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h4>
-            <h3 class="card-title">${digimon.nombre}</h3>
+            <h5 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h5>
+            <h4 class="card-title">${digimon.nombre}</h4>
             <input type="hidden" class="card-tipos" value='${digimon.tipos}'>
             <input type="hidden" class="card-descripcion" value='${digimon.descripcion}'>
         </div>
@@ -121,7 +121,8 @@ function mostrarModal(elementoId){
         nombreModal.text(nombreDigimon);
         tiposModal.text(tipoDigimon);
         descrModal.text(descrDigimon);
-        imgModal.attr("src", urlImgDigimon)
+        imgModal.attr("src", urlImgDigimon);
+        imgModal.addClass("img-thumbnail rounded-circle bounce-in-top")
     });
 
     $("#digiModal").modal("show");
@@ -140,6 +141,7 @@ function limpiarModal(){
     tipoModal.text('');
     descripcionModal.text('');
     imagenModal.attr('src', '');
+    imagenModal.removeClass("img-thumbnail rounded-circle bounce-in-top")
 }
 
 
