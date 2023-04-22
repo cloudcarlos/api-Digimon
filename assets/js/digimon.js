@@ -83,6 +83,7 @@ async function quienEsEseDigimon(){
 }
 
 // MODAL DIGIMON
+
 function mostrarModal(elementoId){
     //limpio el modal de los datos anteriore
     limpiarModal();
@@ -91,6 +92,7 @@ function mostrarModal(elementoId){
     const nombreModal = $('.modal-nombre');
     const tiposModal = $('.modal-tipo');
     const descrModal = $('.modal-descripcion');
+    const imgModal = $('.modal-imagen');
     // capturo los datos del card 
     const cards = document.querySelectorAll(`#${elementoId}`);
     cards.forEach(card => {
@@ -107,19 +109,19 @@ function mostrarModal(elementoId){
         const descrDigimon = cardDescr.getAttribute('value');
         //captura la url de la imagen del digimon
         const cardImagen = card.querySelector('.card-img-top');
-        const urlImgDigimon = cardImagen.getAttribute('value');
+        const urlImgDigimon = cardImagen.getAttribute('src');
 
         console.log(`URL de imagen: ${urlImgDigimon}`);
         console.log(`
             | n°: ${numeroDigimon} | name: ${nombreDigimon} | tipo: ${tipoDigimon} 
             | descripcion : ${descrDigimon}
         `);
-            
         //asigno los valores al modal
         numeroModal.text(numeroDigimon);
         nombreModal.text(nombreDigimon);
         tiposModal.text(tipoDigimon);
         descrModal.text(descrDigimon);
+        imgModal.attr("src", urlImgDigimon)
     });
 
     $("#digiModal").modal("show");
