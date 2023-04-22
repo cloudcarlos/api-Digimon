@@ -19,9 +19,9 @@ function generarCard(digimon){
         <div class="card-body justify-content-center">
             <h5 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h5>
             <h4 class="card-title">${digimon.nombre}</h4>
-            <input type="hidden" class="card-tipos" value='${digimon.tipos}'>
-            <input type="hidden" class="card-niveles" value='${digimon.niveles}'>
-            <input type="hidden" class="card-descripcion" value='${digimon.descripcion}'>
+            <p hidden class="card-tipos">${digimon.tipos}</p>
+            <p hidden class="card-niveles">${digimon.niveles}</p>
+            <p hidden class="card-descripcion">${digimon.descripcion}</p>
         </div>
     </div>
     `;
@@ -51,10 +51,11 @@ async function obtenerDigimon(id){
 
 
         //capturar descripcion en ingles
-        let textoIngles; 
+        let textoIngles=''; 
         digimon.descripcion.forEach(descripcion => {
             if (descripcion.language === "en_us") {
                 textoIngles = descripcion.description;
+                //console.log(textoIngles)
             }
         });
         digimon.descripcion = textoIngles;
@@ -110,14 +111,11 @@ function mostrarModal(elementoId){
         //captura el nombre del digimon
         const nombreDigimon = cardBody.querySelector('.card-title').innerHTML;
         //captura el value de los tipos del digimon
-        const cardTipo = cardBody.querySelector('.card-tipos');
-        const tipoDigimon = cardTipo.getAttribute('value');
+        const tipoDigimon = cardBody.querySelector('.card-tipos').innerHTML;
         //captura el value de los niveles del digimon
-        const cardNivel = cardBody.querySelector('.card-niveles');
-        const nivelDigimon = cardNivel.getAttribute('value');
+        const nivelDigimon = cardBody.querySelector('.card-niveles').innerHTML
         //captura el value de la descripcion del digimon
-        const cardDescr = cardBody.querySelector('.card-descripcion');
-        const descrDigimon = cardDescr.getAttribute('value');
+        const descrDigimon = cardBody.querySelector('.card-descripcion').innerHTML;
         //captura la url de la imagen del digimon
         const cardImagen = card.querySelector('.card-img-top');
         const urlImgDigimon = cardImagen.getAttribute('src');
@@ -135,7 +133,7 @@ function mostrarModal(elementoId){
         nivelesModal.text(nivelDigimon);
         descrModal.text(descrDigimon);
         imgModal.attr("src", urlImgDigimon);
-        imgModal.addClass("img-thumbnail rounded-circle bounce-in-top")
+        imgModal.addClass("bounce-in-top")
     });
 
     $("#digiModal").modal("show");
@@ -156,7 +154,7 @@ function limpiarModal(){
     nivelModal.text('');
     descripcionModal.text('');
     imagenModal.attr('src', '');
-    imagenModal.removeClass("img-thumbnail rounded-circle bounce-in-top")
+    imagenModal.removeClass("bounce-in-top")
 }
 
 

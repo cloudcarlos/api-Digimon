@@ -13,15 +13,35 @@
     <header>
       <div class="container-fluid flex-column py-2">
         <!-- Logo y nombre de la página -->
-          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-5" src="./assets/img/digimon-logo-1.png" >
+          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-5" src="./assets/img/digimon-logo-1.png" href="/"> 
       </div>  
     </header>
 
-    <div id="principal" class="container my-2" >
-        <div class="album py-2 mx-2 bg-body-tertiary">
+
+    <div id="principal" class="container w-100 m-auto" >
+    <!-- NAVBAR flotante -->
+        <nav id="navbar" class="navbar navbar-expand-lg color-change-2x py-2 px-2 g-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText" class="text-white">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./index.html"><strong>Random</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><strong>Busqueda</strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="album my-2 mx-2 bg-body-tertiary">
             <div class="container">
                 <!-- inicio de las card -->
-                <div id="random-digimon" class="row row-cols-3 row-cols-md-2 g-4">
+                <div id="random-digimon" class="row justify-content-center row-cols-12 row-cols-md-2 g-6 ">
                   
                 </div>
                 <!-- fin de las card -->
@@ -37,20 +57,20 @@
                 <h5 id="modal-digimon-label" class="modal-title">Mas información del Digimon</h5>
             </div>
             <div class="modal-body">
-                <div id="uno" style="display:flex">
+                <div id="arriba" class="p-2">
                     <div id="izquierda">
                         <p><strong>Numero:</strong> <span class="modal-numero"></span></p>
                         <p><strong>Nombre:</strong> <span class="modal-nombre"></span></p>
                         <p><strong>Tipos:</strong> <span class="modal-tipo"></span></p>
                         <p><strong>Niveles:</strong> <span class="modal-nivel"></span></p>    
                     </div>
-                    <div id="derecha">
+                    <div id="derecha" class="d-inline-block w-auto">
                         <img class='modal-imagen' alt="Img no disponible">
                     </div>
                 </div>
-                <div id="dos">
+                <div id="abajo" class="p-2">
                     <p><strong>Descripción:</strong></p>
-                    <p class="modal-descripcion"></p>      
+                    <span class="modal-descripcion"></span>      
                 </div>
             </div>
           </div>
