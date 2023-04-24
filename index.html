@@ -9,15 +9,15 @@
     <link rel="icon" href="./assets/img/digimon-icono.png" type="image/icon type">
     <title>Random Digimon!!</title>
 </head>
-<body">
+<body>
     <header>
-      <div class="container-fluid flex-column py-2">
+      <div class="container py-2">
         <!-- Logo y nombre de la página -->
           <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-5" src="./assets/img/digimon-logo-1.png" href="/"> 
       </div>
           <!-- NAVBAR flotante -->
-          <nav id="navbar" class="navbar navbar-expand-lg color-change-2x g-3">
-            <div class="container-fluid d-inline-block justify-content-center">
+        <nav id="navbar" class="navbar navbar-expand-lg color-change-2x g-3">
+            <div class="container d-inline-block justify-content-center">
                 <button id="button-navbar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,8 +34,6 @@
             </div>
         </nav>
     <!-- NAVBAR flotante -->
-        
-
     </header>
     <div id="principal" class="container w-100 m-auto">
             <div class="container album p-2 mx-2 bg-body-tertiary">
@@ -77,7 +75,7 @@
       </div>
 
     <!-- FOOTER  -->
-    <footer id="footer-digimon" class="d-flex justify-content-center bg-dark text-white h-auto">
+    <footer id="footer-digimon" class="d-flex mt-1 justify-content-center bg-dark text-white h-auto">
             <p>TripleG Spa. Derechos reservados © 2023</p>
     </footer>
       
@@ -103,7 +101,7 @@
                 })
             });
 
-                function verTamanoNavegador(){
+            function verTamanoNavegador(){
 
                     if (window.innerWidth <= 768) { //
                         console.log("Estás viendo la página en un dispositivo móvil");
@@ -115,7 +113,7 @@
                         console.log("Estás viendo la página en un dispositivo de escritorio");
                 
                     }                  
-
+   
                     /*
                     const navbar = $('#navbar');
                     var width = $(window).width();
