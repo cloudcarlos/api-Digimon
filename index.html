@@ -6,100 +6,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="./assets/css/digimon.css" rel="stylesheet" type="text/css"></style>
-    <link rel="icon" href="./assets/img/digimon-icono.png" type="image/icon type">
+    
     <title>Random Digimon!!</title>
 </head>
-<body">
+<body>
     <header>
-      <div class="container-fluid flex-column py-2">
-        <!-- Logo y nombre de la página -->
-          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-5" src="./assets/img/digimon-logo-1.png" href="/"> 
-      </div>  
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container-fluid align-items-center flex-column">
+              <!-- Logo y nombre de la página -->
+              <img src=" ">
+              <a class="navbar-brand mb-0 h1" href="#">Mi sitio web</a>
+          
+              <!-- Menú de navegación -->
+              <div class="collapse navbar-collapse mt-2" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Acerca de</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>  
     </header>
 
-
-    <div id="principal" class="container w-100 m-auto" >
+<<<<<<< Updated upstream
+    <div id="principal" class="container">
+        <h1>Conocelos a todos!!</h1>
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+=======
+    <div id="principal" class="container w-100 m-auto">
     <!-- NAVBAR flotante -->
-        <nav id="navbar" class="navbar navbar-expand-lg color-change-2x py-2 px-2 g-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <nav id="navbar" class="navbar navbar-expand-lg color-change-2x g-3">
+            <div class="container-fluid d-inline-block justify-content-center">
+                <button id="button-navbar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText" class="text-white">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 g-3" >
                         <li class="nav-item">
                             <a class="nav-link active" href="./index.html"><strong>Random</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>Busqueda</strong></a>
+                            <a class="nav-link" href="./busqueda.html"><strong>Busqueda</strong></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+    <!-- NAVBAR flotante -->
         
-        <div class="album my-2 mx-2 bg-body-tertiary">
-            <div class="container">
+            <div class="container album p-2 mx-2 bg-body-tertiary">
+>>>>>>> Stashed changes
                 <!-- inicio de las card -->
-                <div id="random-digimon" class="row justify-content-center row-cols-12 row-cols-md-2 g-6 ">
+                <div id="random-digimon" class="row row-cols-4 row-cols-lg-3 g-2">
                   
                 </div>
                 <!-- fin de las card -->
             </div>
-        </div>
     </div>
 
     <!-- MODAL PARA MOSTRAR LA INFORMACION DEL DIGIMON-->
+
+
     <div class="modal fade" id="digiModal" tabindex="-1" role="dialog" aria-labelledby="modal-digimon-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header modal-header-no-close">
-                <h5 id="modal-digimon-label" class="modal-title">Mas información del Digimon</h5>
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-digimon-label">Detalles del Digimon</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
-                <div id="arriba" class="p-2">
-                    <div id="izquierda">
+<<<<<<< Updated upstream
+              <p><strong>Numero:</strong> <span class="modal-numero"></span></p>
+              <p><strong>Nombre:</strong> <span class="modal-nombre"></span></p>
+              <p><strong>Tipos:</strong> <span class="modal-tipo"></span></p>
+              <p><strong>Descripción:</strong></p>
+              <p class="modal-descripcion"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+=======
+                <div id="arriba" class="p-2 row">
+                    <div id="izquierda" class="col col-4">
                         <p><strong>Numero:</strong> <span class="modal-numero"></span></p>
                         <p><strong>Nombre:</strong> <span class="modal-nombre"></span></p>
                         <p><strong>Tipos:</strong> <span class="modal-tipo"></span></p>
                         <p><strong>Niveles:</strong> <span class="modal-nivel"></span></p>    
+                        <p><strong>Lanzamiento:</strong> <span class="modal-lanzamiento"></span></p>  
                     </div>
-                    <div id="derecha" class="d-inline-block w-auto">
-                        <img class='modal-imagen' alt="Img no disponible">
+                    <div id="derecha" class="col w-auto">
+                        <img id="img-modal" class='modal-imagen mw-100' alt="Img no disponible">
                     </div>
                 </div>
                 <div id="abajo" class="p-2">
                     <p><strong>Descripción:</strong></p>
                     <span class="modal-descripcion"></span>      
                 </div>
+>>>>>>> Stashed changes
             </div>
           </div>
         </div>
       </div>
 
-
     <!-- FOOTER  -->
-    <footer class="bg-dark fixed-bottom">
-        <div class="container align-items-center flex-column text-white">
+    <footer id="footer-digimon" class="d-flex justify-content-center bg-dark text-white h-auto">
             <p>TripleG Spa. Derechos reservados © 2023</p>
-        </div>
     </footer>
       
-    
 <!-------------- SCRIPTS -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
         
 
-        <script src='./assets/js/digimon.js?v=123'></script>
+        <script src="./assets/js/digimon.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
         <script>
+<<<<<<< Updated upstream
+          $(document).ready(function(){
+              const x = 100// tiempo en milisegundos
+              for (let i = 0; i<10; i++) { // i< indica cuantos pokemon random genera
+                  setTimeout( function() { // setTimeout ayuda a ir mostrando los modal cada x milisegundos
+                      quienEsEseDigimon()
+                  }, i * x);
+              };
+              
+                  let tarjetitas= document.querySelectorAll('.digimon');
+                  $(tarjetitas).click( function () {
+                      alert('ahaha')
+                      limpiarModal();
+                      let digimon = {
+                          nuumero : $("this").data('numero'),
+                          noombre : $('this').data('nombre'),
+                          tiipos : $('this').data('tipos'),
+                          deescripshon : $('this').data('descripcion')
+                      }
+                      $('.modal-numero').text(digimon.nuumero);
+                      $('.modal-nombre').text(digimon.noombre);
+                      $('.modal-tipo').text(digimon.tiipos);
+                      $('.modal-descripcion').text(digimon.deescripshon);
+                      $("#digiModal").modal("show")
+                  });
+              });
+    
+=======
             $(document).ready(function(){
-                const maximo = 30;
+                verTamanoNavegador()
+                const maximo = 30; //cantidad maxima de digimon generados
                 for (i = 0; i < maximo; i++){
-                    quienEsEseDigimon();
-                }                  
+                    setTimeout( function(){
+                        quienEsEseDigimon()
+                    }, i * ms)
+                }
+
+                $(window).resize( function(){
+                    verTamanoNavegador();
+                })
             });
+
+                function verTamanoNavegador(){
+
+                    if (window.innerWidth <= 768) { //
+                        console.log("Estás viendo la página en un dispositivo móvil");
+                        navbar.css = ('top',"32px");
+                        navbar.css = ('left',"32px")
+                    } else {
+                        navbar.css = ('top',"64px")
+                        navbar.css = ('left',"64px")
+                        console.log("Estás viendo la página en un dispositivo de escritorio");
+                
+                    }                  
+
+                    /*
+                    const navbar = $('#navbar');
+                    var width = $(window).width();
+                    var height = $(window).height();
+                    var deviceType = '';
+                    if(width <= 768){
+                        deviceType = 'Movil'
+                        navbar.css = ('top',"32px");
+                        navbar.css = ('left',"32px")
+                        navbar.
+                    }else{
+                        deviceType = 'Escritorio'
+                        navbar.css = ('top',"64px")
+                        navbar.css = ('left',"64px")
+                    }
+                    console.log(deviceType + ' | width: '+ width + ' | height: ' + height)
+                */
+                }
+
+                //prueba de cambio de tamaño en la pantalla
+                if (window.innerWidth <= 768) { //
+                    console.log("Estás viendo la página en un dispositivo móvil");
+                    } else {
+                    console.log("Estás viendo la página en un dispositivo de escritorio");
+                }                  
+
+>>>>>>> Stashed changes
       </script>
 </body>
 </html>
