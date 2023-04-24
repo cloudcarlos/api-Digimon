@@ -21,7 +21,7 @@ function generarId(){
 //card para ser renderizado en el DOM id  #random-digimon
 function generarCard(digimon){ 
     const card =`
-    <div id="digimon-${digimon.numero}" class="card card-digimon py-2 puff-in-center d-flex justify-content-center text-align-center " data-toggle="modal" data-target="#digiModal" onclick="mostrarModal('digimon-${digimon.numero}')">
+    <div id="digimon-${digimon.numero}" class="card card-digimon py-2 puff-in-center justify-content-center text-align-center " data-toggle="modal" data-target="#digiModal" onclick="mostrarModal('digimon-${digimon.numero}')">
         <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
         <div class="card-body justify-content-center">
             <h5 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h5>
