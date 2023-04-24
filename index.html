@@ -13,27 +13,9 @@
     <header>
       <div class="container py-2">
         <!-- Logo y nombre de la página -->
-          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-5" src="./assets/img/digimon-logo-1.png" href="/"> 
+          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-4" src="./assets/img/digimon-logo-1.png" href="/"> 
       </div>
-          <!-- NAVBAR flotante -->
-        <nav id="navbar" class="navbar navbar-expand-lg color-change-2x g-3">
-            <div class="container d-inline-block justify-content-center">
-                <button id="button-navbar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText" class="text-white">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 g-3" >
-                        <li class="nav-item">
-                            <a class="nav-link active" href="./index.html"><strong>Random</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./busqueda.html"><strong>Busqueda</strong></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    <!-- NAVBAR flotante -->
+
     </header>
     <div id="principal" class="container w-100 m-auto">
             <div class="container album p-2 mx-2 bg-body-tertiary">
@@ -88,57 +70,13 @@
         <script src='./assets/js/digimon.js?v=123'></script>
         <script>
             $(document).ready(function(){
-                verTamanoNavegador()
                 const maximo = 30; //cantidad maxima de digimon generados
                 for (i = 0; i < maximo; i++){
                     setTimeout( function(){
                         quienEsEseDigimon()
                     }, i * ms)
                 }
-
-                $(window).resize( function(){
-                    verTamanoNavegador();
-                })
-            });
-
-            function verTamanoNavegador(){
-
-                    if (window.innerWidth <= 768) { //
-                        console.log("Estás viendo la página en un dispositivo móvil");
-                        navbar.css = ('top',"32px");
-                        navbar.css = ('left',"32px")
-                    } else {
-                        navbar.css = ('top',"64px")
-                        navbar.css = ('left',"64px")
-                        console.log("Estás viendo la página en un dispositivo de escritorio");
-                
-                    }                  
-   
-                    /*
-                    const navbar = $('#navbar');
-                    var width = $(window).width();
-                    var height = $(window).height();
-                    var deviceType = '';
-                    if(width <= 768){
-                        deviceType = 'Movil'
-                        navbar.css = ('top',"32px");
-                        navbar.css = ('left',"32px")
-                        navbar.
-                    }else{
-                        deviceType = 'Escritorio'
-                        navbar.css = ('top',"64px")
-                        navbar.css = ('left',"64px")
-                    }
-                    console.log(deviceType + ' | width: '+ width + ' | height: ' + height)
-                */
-                }
-
-                //prueba de cambio de tamaño en la pantalla
-                if (window.innerWidth <= 768) { //
-                    console.log("Estás viendo la página en un dispositivo móvil");
-                    } else {
-                    console.log("Estás viendo la página en un dispositivo de escritorio");
-                }                  
+            }); 
       </script>
 </body>
 </html>
