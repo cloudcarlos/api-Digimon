@@ -35,12 +35,6 @@
           </nav>  
     </header>
 
-<<<<<<< Updated upstream
-    <div id="principal" class="container">
-        <h1>Conocelos a todos!!</h1>
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-=======
     <div id="principal" class="container w-100 m-auto">
     <!-- NAVBAR flotante -->
         <nav id="navbar" class="navbar navbar-expand-lg color-change-2x g-3">
@@ -63,7 +57,6 @@
     <!-- NAVBAR flotante -->
         
             <div class="container album p-2 mx-2 bg-body-tertiary">
->>>>>>> Stashed changes
                 <!-- inicio de las card -->
                 <div id="random-digimon" class="row row-cols-4 row-cols-lg-3 g-2">
                   
@@ -85,16 +78,6 @@
               </button>
             </div>
             <div class="modal-body">
-<<<<<<< Updated upstream
-              <p><strong>Numero:</strong> <span class="modal-numero"></span></p>
-              <p><strong>Nombre:</strong> <span class="modal-nombre"></span></p>
-              <p><strong>Tipos:</strong> <span class="modal-tipo"></span></p>
-              <p><strong>Descripción:</strong></p>
-              <p class="modal-descripcion"></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-=======
                 <div id="arriba" class="p-2 row">
                     <div id="izquierda" class="col col-4">
                         <p><strong>Numero:</strong> <span class="modal-numero"></span></p>
@@ -111,7 +94,6 @@
                     <p><strong>Descripción:</strong></p>
                     <span class="modal-descripcion"></span>      
                 </div>
->>>>>>> Stashed changes
             </div>
           </div>
         </div>
@@ -130,34 +112,6 @@
 
         <script src="./assets/js/digimon.js?ver<%=DateTime.Now.Ticks.ToString()%>"></script>
         <script>
-<<<<<<< Updated upstream
-          $(document).ready(function(){
-              const x = 100// tiempo en milisegundos
-              for (let i = 0; i<10; i++) { // i< indica cuantos pokemon random genera
-                  setTimeout( function() { // setTimeout ayuda a ir mostrando los modal cada x milisegundos
-                      quienEsEseDigimon()
-                  }, i * x);
-              };
-              
-                  let tarjetitas= document.querySelectorAll('.digimon');
-                  $(tarjetitas).click( function () {
-                      alert('ahaha')
-                      limpiarModal();
-                      let digimon = {
-                          nuumero : $("this").data('numero'),
-                          noombre : $('this').data('nombre'),
-                          tiipos : $('this').data('tipos'),
-                          deescripshon : $('this').data('descripcion')
-                      }
-                      $('.modal-numero').text(digimon.nuumero);
-                      $('.modal-nombre').text(digimon.noombre);
-                      $('.modal-tipo').text(digimon.tiipos);
-                      $('.modal-descripcion').text(digimon.deescripshon);
-                      $("#digiModal").modal("show")
-                  });
-              });
-    
-=======
             $(document).ready(function(){
                 verTamanoNavegador()
                 const maximo = 30; //cantidad maxima de digimon generados
@@ -211,7 +165,6 @@
                     console.log("Estás viendo la página en un dispositivo de escritorio");
                 }                  
 
->>>>>>> Stashed changes
       </script>
 </body>
 </html>
