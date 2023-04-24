@@ -9,52 +9,22 @@
     <link rel="icon" href="./assets/img/digimon-icono.png" type="image/icon type">
     <title>Random Digimon!!</title>
 </head>
-<body">
+<body>
     <header>
-      <div class="container-fluid flex-column py-2">
+      <div class="container py-2">
         <!-- Logo y nombre de la página -->
-          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-5" src="./assets/img/digimon-logo-1.png" href="/"> 
-      </div>  
+          <img id="img-logo" class="img-fluid rounded mx-auto d-block flicker-4" src="./assets/img/digimon-logo-1.png" href="/"> 
+      </div>
+
     </header>
-
-<<<<<<< HEAD
     <div id="principal" class="container w-100 m-auto">
-=======
-
-    <div id="principal" class="container w-100 m-auto" >
->>>>>>> parent of b597c3a (Squashed commit of the following:)
-    <!-- NAVBAR flotante -->
-        <nav id="navbar" class="navbar navbar-expand-lg color-change-2x py-2 px-2 g-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText" class="text-white">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="./index.html"><strong>Random</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>Busqueda</strong></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        
-<<<<<<< HEAD
             <div class="container album p-2 mx-2 bg-body-tertiary">
-=======
-        <div class="album my-2 mx-2 bg-body-tertiary">
-            <div class="container">
->>>>>>> parent of b597c3a (Squashed commit of the following:)
                 <!-- inicio de las card -->
                 <div id="random-digimon" class="row justify-content-center row-cols-12 row-cols-md-2 g-6 ">
                   
                 </div>
                 <!-- fin de las card -->
             </div>
-        </div>
     </div>
 
     <!-- MODAL PARA MOSTRAR LA INFORMACION DEL DIGIMON-->
@@ -65,20 +35,16 @@
                 <h5 id="modal-digimon-label" class="modal-title">Mas información del Digimon</h5>
             </div>
             <div class="modal-body">
-<<<<<<< HEAD
                 <div id="arriba" class="p-2 row">
                     <div id="izquierda" class="col col-4">
-=======
-                <div id="arriba" class="p-2">
-                    <div id="izquierda">
->>>>>>> parent of b597c3a (Squashed commit of the following:)
                         <p><strong>Numero:</strong> <span class="modal-numero"></span></p>
                         <p><strong>Nombre:</strong> <span class="modal-nombre"></span></p>
                         <p><strong>Tipos:</strong> <span class="modal-tipo"></span></p>
                         <p><strong>Niveles:</strong> <span class="modal-nivel"></span></p>    
+                        <p><strong>Lanzamiento:</strong> <span class="modal-lanzamiento"></span></p>  
                     </div>
-                    <div id="derecha" class="d-inline-block w-auto">
-                        <img class='modal-imagen' alt="Img no disponible">
+                    <div id="derecha" class="col w-auto">
+                        <img id="img-modal" class='modal-imagen mw-100' alt="Img no disponible">
                     </div>
                 </div>
                 <div id="abajo" class="p-2">
@@ -90,15 +56,11 @@
         </div>
       </div>
 
-
     <!-- FOOTER  -->
-    <footer class="bg-dark fixed-bottom">
-        <div class="container align-items-center flex-column text-white">
+    <footer id="footer-digimon" class="d-flex mt-1 justify-content-center bg-dark text-white h-auto">
             <p>TripleG Spa. Derechos reservados © 2023</p>
-        </div>
     </footer>
       
-    
 <!-------------- SCRIPTS -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
@@ -108,15 +70,13 @@
         <script src='./assets/js/digimon.js?v=123'></script>
         <script>
             $(document).ready(function(){
-                const maximo = 30;
+                const maximo = 30; //cantidad maxima de digimon generados
                 for (i = 0; i < maximo; i++){
-                    quienEsEseDigimon();
-                }                  
-<<<<<<< HEAD
-
-=======
-            });
->>>>>>> parent of b597c3a (Squashed commit of the following:)
+                    setTimeout( function(){
+                        quienEsEseDigimon()
+                    }, i * ms)
+                }
+            }); 
       </script>
 </body>
 </html>

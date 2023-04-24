@@ -1,9 +1,16 @@
 // VARIABLES Y CONSTANTES
 const primerDgm = 1;    //primer digimon 1
 const ultimoDgm = 1422; //ultimo digimon 1422
-const cuantos= 10       // cantidad de digimon generados
-const ms = 500          // cantidad de milisegundos entre renderizar una u otra card
+const ms = 50       // cantidad de milisegundos entre renderizar una u otra card
 
+//capturo los elementos del modal    
+const numeroModal = $('.modal-numero');
+const nombreModal = $('.modal-nombre');
+const tiposModal = $('.modal-tipo');
+const nivelesModal = $('.modal-nivel');
+const lanzModal = $('.modal-lanzamiento')
+const descrModal = $('.modal-descripcion');
+const imgModal = $('.modal-imagen');
 
 // genera un id aleatorio para ver los datos de un digimon aleatorio
 function generarId(){ 
@@ -11,19 +18,19 @@ function generarId(){
     //console.log("id generado");
     return id;
 }
-//card para ser renderizado en el DOM #random-digimon
+//card para ser renderizado en el DOM id  #random-digimon
 function generarCard(digimon){ 
     const card =`
-    <div id="digimon-${digimon.numero}" class="card card-digimon slide-in-bck-center" data-toggle="modal" data-target="#digiModal" onclick="mostrarModal('digimon-${digimon.numero}')">
+    <div id="digimon-${digimon.numero}" class="card card-digimon py-2 puff-in-center justify-content-center text-align-center " data-toggle="modal" data-target="#digiModal" onclick="mostrarModal('digimon-${digimon.numero}')">
         <img class="card-img-top rounded-circle" style="max-height: 50%;" src='${digimon.imagen}' alt="digimon ${digimon.numero}">
         <div class="card-body justify-content-center">
             <h5 class="card-subtitle mb-2 text-muted">#${digimon.numero}</h5>
             <h4 class="card-title">${digimon.nombre}</h4>
             <p hidden class="card-tipos">${digimon.tipos}</p>
             <p hidden class="card-niveles">${digimon.niveles}</p>
+            <p hidden class="card-lanzamiento">${digimon.lanzamiento}</p>
             <p hidden class="card-descripcion">${digimon.descripcion}</p>
         </div>
-    </div>
     `;
     //console.log("card generado");
     return card;
@@ -34,32 +41,30 @@ function prueba(){
 }
 
 // busqueda de digimon random
-async function obtenerDigimon(id){
-    try{
-        //console.log('url api digimon...');
-        const url = `https://digimon-api.com/api/v1/digimon/${id}`;
-        const response = await fetch(url);
-        const data = await response.json();
+function obtenerDigimon(id){
+    //console.log('url api digimon...');
+    const url = `https://digimon-api.com/api/v1/digimon/${id}`;
+    return fetch(url)
+    .then(response => response.json())
+    .then(data => {    
         const digimon = {
             numero: data.id,
             nombre: data.name,
             imagen: data.images[0].href,
             niveles: data.levels,
             tipos: data.types,
+            lanzamiento : data.releaseDate,
             descripcion: data.descriptions
         };
-
-
         //capturar descripcion en ingles
         let textoIngles=''; 
         digimon.descripcion.forEach(descripcion => {
-            if (descripcion.language === "en_us") {
-                textoIngles = descripcion.description;
-                //console.log(textoIngles)
+            if (descripcion.language === "en_us"){
+                textoIngles = descripcion.description
             }
-        });
+        })
         digimon.descripcion = textoIngles;
-            
+
         //capturar los tipos del digimon
         let tipos = digimon.tipos.map(tipo => tipo.type).join(", ");
         digimon.tipos = tipos;
@@ -68,13 +73,13 @@ async function obtenerDigimon(id){
         let niveles = digimon.niveles.map(nivel => nivel.level).join(", ");
         digimon.niveles = niveles;
 
-        console.table(digimon)    
-        return digimon;       
-
-    }catch (error) {
-        console.error(error);
+        //console.table(digimon) para revisar toda la data del digimon capturado   
+        return digimon;
+        
+    })
+    .catch(error => console.error(error))
     }
-}
+
 
 function renderizarDigimones(digimon) {
     const digimonContenedor = document.querySelector("#random-digimon");
@@ -87,21 +92,13 @@ async function quienEsEseDigimon(){
     let id= generarId();
     let digimon = await obtenerDigimon(id);
     //console.table(digimon)
-    renderizarDigimones(digimon);
+        renderizarDigimones(digimon);
 }
-
 // MODAL DIGIMON
 
 function mostrarModal(elementoId){
     //limpio el modal de los datos anteriore
     limpiarModal();
-    //capturo los elementos del modal    
-    const numeroModal = $('.modal-numero');
-    const nombreModal = $('.modal-nombre');
-    const tiposModal = $('.modal-tipo');
-    const nivelesModal = $('.modal-nivel');
-    const descrModal = $('.modal-descripcion');
-    const imgModal = $('.modal-imagen');
     // capturo los datos del card 
     const cards = document.querySelectorAll(`#${elementoId}`);
     cards.forEach(card => {
@@ -113,15 +110,18 @@ function mostrarModal(elementoId){
         //captura el value de los tipos del digimon
         const tipoDigimon = cardBody.querySelector('.card-tipos').innerHTML;
         //captura el value de los niveles del digimon
-        const nivelDigimon = cardBody.querySelector('.card-niveles').innerHTML
+        const nivelDigimon = cardBody.querySelector('.card-niveles').innerHTML;
+        //captura el value del lanzamiento del digimon
+        const lanzDigmon = cardBody.querySelector('.card-lanzamiento').innerHTML;
         //captura el value de la descripcion del digimon
         const descrDigimon = cardBody.querySelector('.card-descripcion').innerHTML;
         //captura la url de la imagen del digimon
         const cardImagen = card.querySelector('.card-img-top');
         const urlImgDigimon = cardImagen.getAttribute('src');
         /*
-        console.log(`URL de imagen: ${urlImgDigimon}`);
+        //comprobacion de constantes del modal
         console.log(`
+            | URL de imagen: ${urlImgDigimon}
             | n°: ${numeroDigimon} | name: ${nombreDigimon} | tipo: ${tipoDigimon} 
             | descripcion : ${descrDigimon}
         `);
@@ -131,30 +131,24 @@ function mostrarModal(elementoId){
         nombreModal.text(nombreDigimon);
         tiposModal.text(tipoDigimon);
         nivelesModal.text(nivelDigimon);
+        lanzModal.text(lanzDigmon);
         descrModal.text(descrDigimon);
         imgModal.attr("src", urlImgDigimon);
-        imgModal.addClass("bounce-in-top")
+        imgModal.addClass("bounce-in-bck")
     });
-
+    //abre el modal
     $("#digiModal").modal("show");
 }
-    
 
 function limpiarModal(){
-    const numeroModal = $('.modal-numero');
-    const nombreModal = $('.modal-nombre');
-    const tipoModal = $('.modal-tipo');
-    const nivelModal = $('.modal-nivel')
-    const descripcionModal = $('.modal-descripcion');
-    const imagenModal = $('.modal-imagen');
-
+    //limpia el modal antes de volver a cargar datos en el mismo
     numeroModal.text('');
     nombreModal.text('');
-    tipoModal.text('');
-    nivelModal.text('');
-    descripcionModal.text('');
-    imagenModal.attr('src', '');
-    imagenModal.removeClass("bounce-in-top")
+    tiposModal.text('');
+    nivelesModal.text('');
+    descrModal.text('');
+    imgModal.attr('src', '');
+    // innecesario imgModal.removeClass("bounce-in-top")
 }
 
 
